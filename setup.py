@@ -10,13 +10,14 @@ setup(
     ],
 
     description='A Python wrapper around Snov.io API',
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
 
     author='Miguel Marques',
     author_email='miguelcdpmarques@gmail.com',
 
     url='http://github.com/miguelcdpmarques/python-snovio',
-    download_url='http://github.com/miguelcdpmarques/python-snovio/downloads',
+    download_url='https://github.com/miguelcdpmarques/python-snovio/archive/0.1.0.tar.gz',
 
     include_package_data=True,
 
