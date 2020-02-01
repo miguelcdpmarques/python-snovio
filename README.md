@@ -6,8 +6,12 @@ This is being developed to make it easier for Python users to interact with the 
 
 All features should be supported with the exception of those that are related to lists. In any case, feel free to add features, I welcome pull requests. 
 
+
+<img src="https://www.remotecrew.io/_nuxt/img/14a498b.png" alt="Remote Crew"  height="40px">
+
+
 Powered by [Remote Crew](https://www.remotecrew.io/)
-<img src="https://www.remotecrew.io/_nuxt/img/14a498b.png" alt="Remote Crew"  height="200px">
+
 
 ![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)
 
@@ -22,23 +26,33 @@ $ pip install python-snovio
 ```
 
 ### User Guide
+
 ##### Setup
 Start by importing the class from the package. 
 
-`from python-snovio import SnovioAPI`
+```
+from python-snovio import SnovioAPI
+```
 
  The next step is to get the credentials from the [API](https://app.snov.io/api-setting) tab of your account at Snov.io.
 
-`SNOVIO_USER_ID = 'your-user-id'`
-`SNOVIO_USER_SECRET = 'your-user-secret'`
+```
+SNOVIO_USER_ID = 'your-user-id'
+SNOVIO_USER_SECRET = 'your-user-secret'
+```
 
 Finally, initialize the instance of `SnovioAPI` with your credentials.
 
-`snovio = SnovioAPI(client_id=SNOVIO_USER_ID, client_secret=SNOVIO_USER_SECRET)`
+```
+snovio = SnovioAPI(client_id=SNOVIO_USER_ID, client_secret=SNOVIO_USER_SECRET)
+```
 
 If you'd prefer to use your access_token instead, you can also initialize the instance using it directly. 
 
-`snovio = SnovioAPI(access_token=ACCESS_TOKEN)`
+```
+snovio = SnovioAPI(access_token=ACCESS_TOKEN)
+```
+
 
 ##### Requests
 
@@ -72,7 +86,7 @@ You can now start to make requests using your account. Here are some of the most
     ```
 - **1 Credit:** Get emails from names √
     ```
-    get_emails_from_names = snovio.get_emails_from_names({
+    snovio.get_emails_from_names({
        'firstName': 'Joe',
        'lastName': 'Thomas',
        'domain': 'loom.com'
