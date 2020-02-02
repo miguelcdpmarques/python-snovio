@@ -1,9 +1,5 @@
 import requests
 import json
-try:
-    from urllib import urlencode
-except ImportError:
-    from urllib.parse import urlencode
 
 
 SNOVIO_API_URL = 'https://app.snov.io/'
