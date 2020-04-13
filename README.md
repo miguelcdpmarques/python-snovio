@@ -7,9 +7,6 @@ This is being developed to make it easier for Python users to interact with the 
 All features should be supported with the exception of those that are related to lists. In any case, feel free to add features, I welcome pull requests. 
 
 
-<img src="https://www.remotecrew.io/_nuxt/img/14a498b.png" alt="Remote Crew"  height="40px">
-
-
 Powered by [Remote Crew](https://www.remotecrew.io/)
 
 <img src="https://www.remotecrew.io/_nuxt/img/14a498b.png" alt="Remote Crew"  height="50px">
