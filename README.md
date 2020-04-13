@@ -12,6 +12,7 @@ All features should be supported with the exception of those that are related to
 
 Powered by [Remote Crew](https://www.remotecrew.io/)
 
+<img src="https://www.remotecrew.io/_nuxt/img/14a498b.png" alt="Remote Crew"  height="50px">
 
 ![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)
 
@@ -33,7 +34,7 @@ Start by importing the class from the package.
 ```
 from snovio import SnovioAPI
 ```
-
+add
  The next step is to get the credentials from the [API](https://app.snov.io/api-setting) tab of your account at Snov.io.
 
 ```
