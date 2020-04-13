@@ -27,7 +27,7 @@ $ pip install python-snovio
 Start by importing the class from the package. 
 
 ```
-from python-snovio import SnovioAPI
+from snovio import SnovioAPI
 ```
 
  The next step is to get the credentials from the [API](https://app.snov.io/api-setting) tab of your account at Snov.io.
