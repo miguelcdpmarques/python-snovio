@@ -106,14 +106,15 @@ if __name__ == "__main__":
     snovio = SnovioAPI(client_id=SNOVIO_USER_ID, client_secret=SNOVIO_USER_SECRET)
 
     # FREE: Get domain emails count √
-    domain_emails_count = snovio.get_domain_emails_count({'domain': 'riskpulse.com'}) 
-    print(domain_emails_count)
+    # domain_emails_count = snovio.get_domain_emails_count({'domain': 'riskpulse.com'}) 
+    # print(domain_emails_count)
 
     # 2 Credits: Get domain emails with info √
     # domain_emails_with_info = snovio.get_domain_emails_with_info({
     #     'domain':'riskpulse.com',
     #     'type': 'all',
-    #     'limit': 100
+    #     'limit': 100,
+    #     'offset': 0
     # })
     # print(domain_emails_with_info)
 
