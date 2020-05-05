@@ -2,7 +2,7 @@ import requests
 import json
 
 
-SNOVIO_API_URL = 'https://app.snov.io/'
+SNOVIO_API_URL = 'https://api.snov.io/v1/'
 SNOVIO_USER_ID = 'your-user-id'
 SNOVIO_USER_SECRET = 'your-user-secret'
 
@@ -41,6 +41,7 @@ class SnovioAPI:
             'client_id': client_id,
             'client_secret': client_secret
         }
+
         response = requests.post(SNOVIO_API_URL + auth_endpoint, data=params)
         return response.json()['access_token']
 
@@ -49,13 +50,16 @@ class SnovioAPI:
         if self.is_parameter_in_uri(endpoint):
             endpoint = self.update_endpoint_with_query_params(endpoint, data)
             data = {}
-        
+
+        # Add authentication
         data['access_token'] = self.access_token
-        response = requests.post(SNOVIO_API_URL + 'restapi/' + endpoint, data=data)
+        response = requests.post(SNOVIO_API_URL + endpoint, data=data)
 
         # Response Validation
         if response.status_code == 200:
-            return response.json()
+            response = response.json()
+            response.pop('access_token', None)
+            return response
 
         elif response.status_code == 401:
             print('Refreshing token')
@@ -64,7 +68,7 @@ class SnovioAPI:
                 data = {}
             self.access_token = self.get_access_token(self.client_id, self.client_secret)
             data['access_token'] = self.access_token
-            response = requests.post(SNOVIO_API_URL + 'restapi/' + endpoint, data=data)
+            response = requests.post(SNOVIO_API_URL + endpoint, data=data)
             return response.json()
 
 
@@ -106,7 +110,9 @@ if __name__ == "__main__":
     snovio = SnovioAPI(client_id=SNOVIO_USER_ID, client_secret=SNOVIO_USER_SECRET)
 
     # FREE: Get domain emails count √
-    # domain_emails_count = snovio.get_domain_emails_count({'domain': 'riskpulse.com'}) 
+    # domain_emails_count = snovio.get_domain_emails_count({
+    #     'domain': 'riskpulse.com'
+    # }) 
     # print(domain_emails_count)
 
     # 2 Credits: Get domain emails with info √
