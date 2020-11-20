@@ -1,7 +1,6 @@
 import requests
 import json
 
-
 SNOVIO_API_URL = 'https://api.snov.io/v1/'
 SNOVIO_USER_ID = 'your-user-id'
 SNOVIO_USER_SECRET = 'your-user-secret'
@@ -42,7 +41,7 @@ class SnovioAPI:
             'client_secret': client_secret
         }
 
-        response = requests.post(SNOVIO_API_URL + auth_endpoint, data=params)
+        response = requests.post(SNOVIO_API_URL + 'v1/' + auth_endpoint, data=params)
         return response.json()['access_token']
 
 
@@ -53,8 +52,15 @@ class SnovioAPI:
 
         # Add authentication
         data['access_token'] = self.access_token
-        response = requests.post(SNOVIO_API_URL + endpoint, data=data)
 
+        if self.get_http_method(endpoint) == 'GET':
+            response = requests.get(
+                SNOVIO_API_URL + self.get_endpoint_version(endpoint) + endpoint, data=data
+            )
+        else:
+            response = requests.post(
+                SNOVIO_API_URL + self.get_endpoint_version(endpoint) + endpoint, data=data
+            )
         # Response Validation
         if response.status_code == 200:
             response = response.json()
@@ -68,7 +74,14 @@ class SnovioAPI:
                 data = {}
             self.access_token = self.get_access_token(self.client_id, self.client_secret)
             data['access_token'] = self.access_token
-            response = requests.post(SNOVIO_API_URL + endpoint, data=data)
+            if self.get_http_method(endpoint) == 'GET':
+                response = requests.get(
+                    SNOVIO_API_URL + self.get_endpoint_version(endpoint) + endpoint, params=data
+                )
+            else:
+                response = requests.post(
+                    SNOVIO_API_URL + self.get_endpoint_version(endpoint) + endpoint, data=data
+                )
             return response.json()
 
 
@@ -80,6 +93,19 @@ class SnovioAPI:
             return response
         return wrapper
 
+    @staticmethod
+    def get_http_method(endpoint):
+        GET_endpoints = ['domain-emails-with-info']
+        if endpoint in GET_endpoints:
+            return 'GET'
+        return 'POST'
+
+    @staticmethod
+    def get_endpoint_version(endpoint):
+        version_2_endpoints = ['domain-emails-with-info']
+        if endpoint in version_2_endpoints:
+            return 'v2/'
+        return 'v1/'
 
     @staticmethod
     def is_parameter_in_uri(endpoint):
@@ -116,11 +142,11 @@ if __name__ == "__main__":
     # print(domain_emails_count)
 
     # 2 Credits: Get domain emails with info √
-    # domain_emails_with_info = snovio.get_domain_emails_with_info({
+    # domain_emails_with_info = snovio.domain_emails_with_info({
     #     'domain':'riskpulse.com',
     #     'type': 'all',
     #     'limit': 100,
-    #     'offset': 0
+    #     'lastId': 0
     # })
     # print(domain_emails_with_info)
 

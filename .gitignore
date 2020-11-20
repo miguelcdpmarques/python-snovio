@@ -2,4 +2,5 @@ __pycache__/
 .vscode/
 python-snovio-venv/
 dist/
+build/
 python_snovio.egg-info/

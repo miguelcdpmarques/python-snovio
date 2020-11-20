@@ -64,11 +64,11 @@ You can now start to make requests using your account. Here are some of the most
     ```
 - **2 Credits:**  Get domain emails with info: √
     ```
-    snovio.get_domain_emails_with_info({
+    snovio.domain_emails_with_info({
         'domain':'riskpulse.com',
         'type': 'all',
         'limit': 100,
-        'offset': 0
+        'lastId': 0
     })
     ```
 - **FREE:**  Get emails verification status √
