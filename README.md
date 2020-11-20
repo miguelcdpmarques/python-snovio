@@ -31,8 +31,7 @@ Start by importing the class from the package.
 ```
 from snovio import SnovioAPI
 ```
-add
- The next step is to get the credentials from the [API](https://app.snov.io/api-setting) tab of your account at Snov.io.
+The next step is to get the credentials from the [API](https://app.snov.io/api-setting) tab of your account at Snov.io.
 
 ```
 SNOVIO_USER_ID = 'your-user-id'
