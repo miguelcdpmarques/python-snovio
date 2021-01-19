@@ -1,7 +1,7 @@
 import requests
 import json
 
-SNOVIO_API_URL = 'https://api.snov.io/v1/'
+SNOVIO_API_URL = 'https://api.snov.io/'
 SNOVIO_USER_ID = 'your-user-id'
 SNOVIO_USER_SECRET = 'your-user-secret'
 
@@ -41,7 +41,10 @@ class SnovioAPI:
             'client_secret': client_secret
         }
 
-        response = requests.post(SNOVIO_API_URL + 'v1/' + auth_endpoint, data=params)
+        response = requests.post(
+            SNOVIO_API_URL + self.get_endpoint_version(auth_endpoint) + auth_endpoint,
+            data=params
+        )
         return response.json()['access_token']
 
 
