@@ -32,7 +32,6 @@ class SnovioAPI:
         self.client_id = client_id
         self.client_secret = client_secret
 
-
     def get_access_token(self, client_id, client_secret):
         auth_endpoint = 'oauth/access_token'
         params = {
@@ -42,11 +41,10 @@ class SnovioAPI:
         }
 
         response = requests.post(
-            SNOVIO_API_URL + self.get_endpoint_version(auth_endpoint) + auth_endpoint,
-            data=params
+            SNOVIO_API_URL + 'v1/' + auth_endpoint, data=params
         )
-        return response.json()['access_token']
-
+        resText = response.text.encode('ascii', 'ignore')
+        return json.loads(resText)['access_token']
 
     def _request(self, endpoint, data):
         if self.is_parameter_in_uri(endpoint):
@@ -58,8 +56,9 @@ class SnovioAPI:
 
         if self.get_http_method(endpoint) == 'GET':
             response = requests.get(
-                # TODO: exchange keyword "data" with "params" (otherwise API does not work)
-                SNOVIO_API_URL + self.get_endpoint_version(endpoint) + endpoint, data=data
+                SNOVIO_API_URL + \
+                self.get_endpoint_version(endpoint) + \
+                endpoint, data=data
             )
         else:
             response = requests.post(

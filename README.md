@@ -35,7 +35,7 @@ The next step is to get the credentials from the [API](https://app.snov.io/api-s
 
 ```
 SNOVIO_USER_ID = 'your-user-id'
-SNOVIO_USER_SECRET = 'your-user-secret'
+SNOVIO_USER_SECRET = 'your-user-secret' 
 ```
 
 Finally, initialize the instance of `SnovioAPI` with your credentials.
