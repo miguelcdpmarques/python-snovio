@@ -98,7 +98,7 @@ class SnovioAPI:
 
     @staticmethod
     def get_http_method(endpoint):
-        GET_endpoints = ['domain-emails-with-info']
+        GET_endpoints = ['domain-emails-with-info']  # TODO: add other GET-endpoints
         if endpoint in GET_endpoints:
             return 'GET'
         return 'POST'
