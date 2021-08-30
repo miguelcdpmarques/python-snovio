@@ -4,8 +4,6 @@ import json
 SNOVIO_API_URL = 'https://api.snov.io/'
 SNOVIO_USER_ID = 'your-user-id'
 SNOVIO_USER_SECRET = 'your-user-secret'
-SNOVIO_USER_ID = 'f1305011987fcb149054f2f597182ffa'
-SNOVIO_USER_SECRET = 'deb85aafb2d124d86d34101d6a5f85ef'
 
 
 class SnovioError(Exception):
