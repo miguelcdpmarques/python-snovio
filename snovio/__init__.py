@@ -99,6 +99,9 @@ class SnovioAPI:
                 )
             return response.json()
 
+        elif response.status_code == 403:
+            raise SnovioError('Unauthorised')
+
     def __getattr__(self, name):
         def wrapper(data={}):
             response = self._request(name.replace('_', '-'), data)
