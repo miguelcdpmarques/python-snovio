@@ -78,7 +78,6 @@ class SnovioAPI:
             return response
 
         elif response.status_code == 401:
-            print('Refreshing token')
             if self.is_parameter_in_uri(endpoint):
                 endpoint = self.update_endpoint_with_query_params(endpoint, data)
                 data = {}
