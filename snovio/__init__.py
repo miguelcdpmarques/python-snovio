@@ -24,7 +24,6 @@ class SnovioAPI:
         'domain-emails-with-info',
         'prospect-finished', 'get-emails-replies', 'get-emails-clicked',
         'get-user-campaigns', 'emails-sent',
-        'get-prospect-by-id', 'get_prospects_by_email',
         'prospect-custom-fields', 'get-user-lists',
         'get-balance'
     ]
