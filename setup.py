@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='python-snovio',
-    version="0.2.0",
+    version="0.2.1",
     license="MIT",
 
     install_requires=[
